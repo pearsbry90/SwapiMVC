@@ -1,9 +1,25 @@
-﻿@model string
+﻿@model ResultsViewModel<PeopleViewModel>
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome @Model</h1>
+    @if (Model.Results?Equals.Count() > 0)
+    {
+        <div>
+            @foreach (var person in Model.Results)
+            {
+                <div>
+                    <h4>@person.Name</h4>
+                    <div>
+                        <p>Mass: @person.Mass</p>
+                        <p>Height: @person.Height</p>
+                        <p>Born: @person.BirthYear</p>
+                    </div>
+                </div>
+            }
+        </div>
+    }
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
